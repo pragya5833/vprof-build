@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      #- aws ecr get-login | docker login --username AWS --password-stdin 848417356303.dkr.ecr.ap-south-1.amazonaws.com
+      #- docker login -u AWS -p $(aws ecr get-login-password --region ap-south-1 848417356303.dkr.ecr.ap-south-1.amazonaws.com
+      - aws ecr get-login
+  build:
+    commands:
+      - docker build -t 848417356303.dkr.ecr.ap-south-1.amazonaws.com/mycontent:6 .
+  post_build:
+    commands:
+      # push
+      - docker tag 848417356303.dkr.ecr.ap-south-1.amazonaws.com/mycontent:6 848417356303.dkr.ecr.ap-south-1.amazonaws.com/mycontent:latest
+      - eval $(aws ecr get-login --no-include-email | sed 's|https://||')
+      - docker push 848417356303.dkr.ecr.ap-south-1.amazonaws.com/mycontent:6
+      - eval $(aws ecr get-login --no-include-email | sed 's|https://||')
+      - docker push 848417356303.dkr.ecr.ap-south-1.amazonaws.com/mycontent:latest
+      # create new task definition
+      - chmod 777 create-new-task-def.sh
+      - sh create-new-task-def.sh demo
+
+artifacts:
+  files:
+    - 'appspec.yaml'
+    - 'taskdef.json'

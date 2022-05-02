@@ -1,0 +1,16 @@
+- name: "Download jenkins latest"
+  get_url:
+    url: https://pkg.jenkins.io/redhat/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+- name: Import jenkins key from url
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://pkg.jenkins.io/redhat/jenkins.io.key
+- name: Install Java
+  yum:
+    name: java-1.8.0-openjdk-devel
+    state: present
+- name: Install Jenkins
+  yum: 
+    name: jenkins
+    state: present

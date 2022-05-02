@@ -1,0 +1,6 @@
+- name: install jenkins
+  hosts: default
+  become: true
+  become_method: "sudo"
+  tasks:
+    - include: './tasks/install_jenkins.yml'

@@ -1,0 +1,52 @@
+services:
+  mysql:
+      platform: linux/x86_64
+      image: mysql:5.7
+      container_name: mysql
+      ports:
+        - '3306:3306'
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        # - MYSQL_PASSWORD=passwd
+        # - MYSQL_USER=user
+        - MYSQL_DATABASE=app
+      volumes:
+      #any sql in the entrypoint path here when mounted will be executed
+        - ./mysql/resources/accountsdb.sql:/docker-entrypoint-initdb.d/accountsdb.sql
+        -  dbvol:/var/lib/mysql
+  memcached:
+      container_name: memcached
+      build: ./memcached/
+      ports:
+        - '11211:11211'
+  rabbitmq:
+      image: rabbitmq:3-management
+      container_name: rabbit_mq
+      environment:
+        - RABBITMQ_DEFAULT_USER=myuser
+        - RABBITMQ_DEFAULT_PASS=mypassword
+      ports:
+        - '5672:5672'
+        - '15672:15672'
+  apacheapp:
+      build: ./application/
+      container_name: apacheapp
+      ports:
+        - "8080:8080"
+      # volumes:
+      #   - .:/usr/local/tomcat/webapps
+  nginx_rev:
+      build: ./nginx_LB/
+      container_name: revproxy
+      ports:
+        - "80:80"
+      volumes:
+        - ./nginx_LB/nginx.conf:/etc/nginx/conf.d/default.conf
+volumes:
+  dbvol: {}
+
+  
+  
+
+
+      

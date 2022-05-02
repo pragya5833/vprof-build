@@ -1,0 +1,7 @@
+devops_project/tomcat_proj_cloud_native/.terraform/*
+devops_project/tomcat_proj_lift_shift_aws/.terraform/*
+terraform_impl_codepipeline/.terraform/*
+terraform_impl_ecs/.terraform/*
+tfCourse/tomcat_ci_cd_impl/.terraform/*
+terraform_impl_codepipeline/.terraform/
+devops_project/tomcat_proj_cloud_native/.terraform/
