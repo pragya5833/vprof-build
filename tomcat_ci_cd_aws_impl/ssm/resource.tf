@@ -1,0 +1,26 @@
+resource "aws_ssm_parameter" "sonarprojectkey" {
+ name="Project"
+ type="String"
+ value=var.sonarprojectkey
+}
+resource "aws_ssm_parameter" "sonarcloudURL" {
+ name="HOST"
+ type="String"
+ value=var.sonarcloudURL
+}
+resource "aws_ssm_parameter" "sonarToken" {
+ name="LOGIN"
+ type="String"
+ value=var.sonarToken
+}
+resource "aws_ssm_parameter" "CODEARTIFACT_AUTH_TOKEN" {
+ name="CODEARTIFACT_AUTH_TOKEN"
+ type="SecureString"
+ value="eyJ2ZXIiOjEsImlzdSI6MTY1MTU5MTc5OSwiZW5jIjoiQTEyOEdDTSIsInRhZyI6IlRBV2dBVUhFUS1xa2dsYlBDeWZyX3ciLCJleHAiOjE2NTE2MzQ5OTksImFsZyI6IkExMjhHQ01LVyIsIml2IjoiZU9lNFp3b01HYndYUlk0WCJ9.UfXv-P3FyYBYJVgRt33xjQ.tyk5nYXK3bI6W4Zk.1nOEXXakc25VeHxYcNYs72iqWQVebXUM47UJjg0R65zVKU-K_Cu0TNyyzTHakp99EdS-7W6MTabr_oJ9dcnzW2iUQ6yL3yKVfflknPs8UQ0vWGAg1jRNnMVvtIMdN5X0D-DyV2kYHYfhStE9e8AhXVj9GI5UIu0USKUykINPu-dKldc0og5C8kmTPVRhHSgprZRSZI3BhXfFRHMuCHJ6XfNCpHK-XWFyYPFchJo2gHuyobOKIHvb37H5SWxGSDG8U38Lb6nJrGNqkdv_xXDprY7nkjtSuKKprDlMLr1f92DfQbqGa0X4_9pjKVtaeJhd2jVtRRVxlgJSYvSSCQOhZf9G2Q_CCpfg9gP3pAGzf5FXVKBB7buLklppX8xz22UFT8w5G2vPMeQZnro3uYaOeKfjPnuF3vVah6ZgiOP9GvI4RrWmEoFXf5EG19dyC__XxlELhT23sP_gVq1D35UUe9XmL3FTO-dQbjuv186u4n2prJdMdTM4Hukg6dHZT8mr9wOcP7Nk90JaqSxtCZkm4MrREhuiu-4Gv5ybimfSNsWM326BZWqsLmE70ZaALFOtvR3_EehTs-x9g6JHy4pkDG6LoMpP0gDlaDeQJ7SW8YRS43qg-fZmUFdsW1w5d6hZ7EcfInhez77xSgqfA8tSGFnmV0eceBpAcaOt8pq1tH3rCWMn2d7fx_vfH6n8RwmnQixghkGvUJqTfrr8pvECrlywSLW-djbMfGvPIo3EuO0bZxdKglTfzK6NhFVXj3X8Yi8ThxffQXGevst-tRLj36xRggNe09MjbpNYO3sA-4Jt06wECGyz7h_hcok7qMbLxRl0J_uk2fXZLQsad47F3P0wkyAAjHfZffByWyXwdIlDEF2DYldAJWzjUBxvjc0Rx0CQmjWWhWPeZ9cuHzMktuKiG63YnLGazx7K5S1evZ9rFN7_9q_8d_a3_osj.9MD0vM_NPJGGf_ezg1v9Kg"
+}
+resource "aws_ssm_parameter" "Organization" {
+ name="Organization"
+ type="String"
+ value="test-plan-projects"
+}
+# test-plan-projects
